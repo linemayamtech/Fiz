@@ -40,7 +40,7 @@ const BulkImportModal = ({ isOpen, closeModal }) => {
                 >
                     {/* Modal Header */}
                     <h1 className="text-lg font-bold text-left text-gray-700">
-                        Import Category Details
+                        Import Product Details
                     </h1>
 
                     {/* Drag and Drop Zone */}

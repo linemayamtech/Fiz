@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
+import './ProductModule.css'; // Import external CSS file for transitions
 
 const ProductModule = () => {
     return (
@@ -11,77 +12,72 @@ const ProductModule = () => {
                 <div className='flex gap-[40px] py-[20px] ps-[30px]'>
                     <NavLink
                         to="/product-module/all-products"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray', // Active text color
-                            textDecoration: isActive ? 'underline' : 'none', // Active underline
-                            textDecorationColor: isActive ? '#FF0000' : 'none', // Active underline color
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         All Product List
                     </NavLink>
                     <NavLink
                         to="/product-module/add-products"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            textDecorationColor: isActive ? '#FF0000' : 'none',
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         Add Product
                     </NavLink>
                     <NavLink
                         to="/product-module/category-management"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            textDecorationColor: isActive ? '#FF0000' : 'none',
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         Category Management
                     </NavLink>
                     <NavLink
                         to="/product-module/hsn-management"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            textDecorationColor: isActive ? '#FF0000' : 'none',
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         HSN Management
                     </NavLink>
                     <NavLink
                         to="/product-module/unit-settings"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            textDecorationColor: isActive ? '#FF0000' : 'none',
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         Unit Settings
                     </NavLink>
                     <NavLink
                         to="/product-module/related-product-settings"
-                        className="font-bold text-gray-500"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#FF0000' : 'gray',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            textDecorationColor: isActive ? '#FF0000' : 'none',
-                        })}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'nav-link active-link text-sm'
+                                : 'nav-link text-sm'
+                        }
                     >
                         Related Product Settings
                     </NavLink>
                 </div>
+
                 <div className='py-4'>
                     <Outlet />
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default ProductModule;

@@ -30,9 +30,9 @@ const SelfLifeDetails = ({ data, setData }) => {
             className="p-2 border border-gray-300 rounded-md flex-1"
           >
             <option value="">Select</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="option1">Days</option>
+            <option value="option2">Months</option>
+            <option value="option3">Years</option>
           </select>
         </div>
       </div>

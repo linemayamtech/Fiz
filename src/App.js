@@ -11,14 +11,14 @@ const App = () => {
         <Header />
       </div>
 
-      <div className="flex flex-grow">
+      <div className="flex flex-grow pt-[100px]"> {/* Added padding to the top to offset the header */}
         {/* Fixed Sidebar Section */}
-        <div className="fixed top-[120px] left-0 w-[330px] h-[calc(100vh-60px)] z-40 bg-white shadow-md">
+        <div className="fixed top-[100px] left-0 w-1/6 h-[calc(100vh-60px)] z-40 bg-white shadow-md">
           <Sidebar />
         </div>
 
         {/* Main Outlet Section */}
-        <div className="flex-grow ml-[330px] mt-[60px] p-4">
+        <div className="flex-grow ml-[16.6667%] p-4"> {/* Added left margin equal to the width of the sidebar */}
           <Outlet />
         </div>
       </div>

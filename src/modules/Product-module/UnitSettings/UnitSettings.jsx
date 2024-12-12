@@ -16,25 +16,25 @@ const UnitSettings = () => {
       <div>
         <h1 className='text-[#667085] font-semibold text-xl'>Unit Settings</h1>
       </div>
-      
-      {/* Links for navigation */}
+
+      {/* Buttons for navigation */}
       <div className='flex gap-[30px] py-[15px]'>
-        <a
-          href="#"
+        <button
+          type="button"
           className={`text-[#667085] font-semibold ${activeLink === 'linkUnit' ? 'text-[#FF0000] underline' : ''}`}
-          style={{ textDecorationThickness: '3px', textDecorationColor: '#FF0000' }}
+          style={{ textDecorationThickness: '3px', textDecorationColor: '#FF0000', background: 'none', border: 'none', cursor: 'pointer' }}
           onClick={() => handleLinkClick('linkUnit')}
         >
           Link Unit to HSN
-        </a>
-        <a
-          href="#"
+        </button>
+        <button
+          type="button"
           className={`text-[#667085] font-semibold ${activeLink === 'createUnit' ? 'text-[#FF0000] underline' : ''}`}
-          style={{ textDecorationThickness: '3px', textDecorationColor: '#FF0000' }}
+          style={{ textDecorationThickness: '3px', textDecorationColor: '#FF0000', background: 'none', border: 'none', cursor: 'pointer' }}
           onClick={() => handleLinkClick('createUnit')}
         >
           Create Unit
-        </a>
+        </button>
       </div>
 
       {/* Render the active component based on the state */}

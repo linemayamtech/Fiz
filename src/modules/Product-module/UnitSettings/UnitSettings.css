@@ -1,0 +1,40 @@
+/* Base styles for links */
+a {
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a:hover {
+    color: #ff0000;
+  }
+  
+  .active-nav-link {
+    color: #ff0000;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #ff0000;
+  }
+  
+  /* Container for transitions */
+  .transition-container {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .transition-container.linkUnit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .transition-container.createUnit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Dark background overlay */
+
+/* UnitSettings.css */
+

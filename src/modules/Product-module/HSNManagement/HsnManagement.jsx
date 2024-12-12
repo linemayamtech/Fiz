@@ -11,12 +11,13 @@ const HsnManagement = () => {
             <span className="text-[#FF0000]">ZeroMiddleMan</span> HSN Codes
           </h1>
           <p className="text-[#828282] pb-[20px]">
-          ZeroMiddleMan unique classification of products and services allows you to search for companies worldwide by keyword or by code. Companies are classified by activity sector (2-digit code), industry (5 digits) or product/service (7 digits)
+            ZeroMiddleMan unique classification of products and services allows you to search for companies worldwide by keyword or by code. Companies are classified by activity sector (2-digit code), industry (5 digits) or product/service (7 digits)
           </p>
         </div>
-
-        {/* Use the Child Component Here */}
-        <HSNSection />
+        <div className='pb-[20px]'> 
+          {/* Use the Child Component Here */}
+          <HSNSection />
+        </div>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import ProductModule from "../modules/Product-module/ProductModule";
-import AllProducts from "../modules/Product-module/AllProducts";
+import AllProducts from "../modules/Product-module/AllProducts/AllProducts";
 import AddProduct from "../modules/Product-module/AddProductForm/AddProduct";
 import CategoryManagement from "../modules/Product-module/CategoryManagement/CategoryManagement";
 import HsnManagement from "../modules/Product-module/HSNManagement/HsnManagement";

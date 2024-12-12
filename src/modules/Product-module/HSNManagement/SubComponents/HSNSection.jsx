@@ -161,7 +161,7 @@ const HSNSection = () => {
     };
 
     return (
-        <div className="shadow-custom hsn-section py-4 px-6">
+        <div className="shadow-custom hsn-section rounded-[15px] py-4 px-6">
             <div className="grid grid-cols-5 gap-6 px-[30px] pb-[20px] border-b border-gray-400">
                 <div className="col-span-3 flex items-center border border-gray-400 rounded-[20px]">
                     <input
