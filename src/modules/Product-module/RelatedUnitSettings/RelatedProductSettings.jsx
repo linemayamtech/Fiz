@@ -5,12 +5,13 @@ import { GrCloudUpload } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import RelatedHSNModal from './RelatedUnitModal'; 
-import BulkImportModalRelated from './BulkUploadModalRelated';// Import the Modal component
-
+import BulkImportModalRelated from './BulkUploadModalRelated'; 
+import SuccessModalRelated from './SuccessModalRelated'; // Import the Success Modal
 
 const RelatedProductSettings = () => {
   const [modalOpen, setModalOpen] = useState(false);
-   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal
 
   // Dummy data for the table
   const [tableData, setTableData] = useState([
@@ -22,6 +23,11 @@ const RelatedProductSettings = () => {
 
   const handleAddLinkUnit = (newData) => {
     setTableData((prev) => [...prev, { ...newData, id: prev.length + 1 }]);
+  };
+
+  const handleUploadSuccess = () => {
+    setIsSuccessModalOpen(true); // Open the success modal when upload is successful
+    setIsModalOpen2(false); // Close the Bulk Import modal
   };
 
   return (
@@ -40,7 +46,7 @@ const RelatedProductSettings = () => {
         <div className="flex justify-end gap-[20px] pe-[10px]">
           <div className="bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]">
             <IoCloudDownloadOutline />
-            <button onClick={()=>setIsModalOpen2(true)}>Import Link Unit</button>
+            <button onClick={() => setIsModalOpen2(true)}>Import Link Unit</button>
           </div>
           <div className="bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]">
             <GrCloudUpload />
@@ -86,7 +92,19 @@ const RelatedProductSettings = () => {
         />
       )}
 
-    <BulkImportModalRelated isOpen2={isModalOpen2} closeModal2={() => setIsModalOpen2(false)} />
+      {/* Render the Bulk Import Modal */}
+      <BulkImportModalRelated
+        isOpen2={isModalOpen2}
+        closeModal2={() => setIsModalOpen2(false)}
+        handleUploadSuccess={handleUploadSuccess} // Pass success handler to BulkImportModal
+      />
+
+      {/* Render the Success Modal */}
+      <SuccessModalRelated
+        isOpen={isSuccessModalOpen}
+        closeModal={() => setIsSuccessModalOpen(false)}
+        message="Related Product details have been successfully imported!"
+      />
     </div>
   );
 };

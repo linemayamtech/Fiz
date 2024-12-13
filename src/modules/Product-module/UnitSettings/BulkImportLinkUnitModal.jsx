@@ -40,7 +40,7 @@ const BulkImportLinktUnitModal = ({ isOpen2, closeModal2 }) => {
                 >
                     {/* Modal Header */}
                     <h1 className="text-lg font-bold text-left text-gray-700">
-                        Import HSN Details
+                        Import Linked Details
                     </h1>
 
                     {/* Drag and Drop Zone */}

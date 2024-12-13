@@ -232,7 +232,7 @@ const AllProducts = () => {
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="mt-2 border border-gray-300 rounded px-2 py-1 outline-none w-[100%] sm:w-[160px] md:w-[160px]"
+                            className="mt-2 border border-gray-300 rounded px-2 py-1 text-gray-400 outline-none w-[100%] sm:w-[160px] md:w-[160px]"
                         >
                             <option value="">All</option>
                             <option value="Active">Active</option>
@@ -385,7 +385,7 @@ const AllProducts = () => {
                                 <select
                                     value={statusFilter}
                                     onChange={(e) => setStatusFilter(e.target.value)}
-                                    className="w-full mt-2 border border-gray-300 rounded px-2 py-1"
+                                    className="w-full mt-2 border border-gray-300 rounded px-2 py-1 text-gray-400"
                                 >
                                     <option value="">All</option>
                                     <option value="Active">Active</option>
@@ -411,7 +411,14 @@ const AllProducts = () => {
                                 <td className="border border-gray-300 px-4 py-2">{row.email}</td>
                                 <td className="border border-gray-300 px-4 py-2">{row.phoneNumber}</td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">
-                                    {row.status}
+                                    <span
+                                        className={`flex items-center px-2 rounded-[10px] ${row.status === "Active" ? "text-[#ff0000] bg-[#ef54666e]" : "text-[#14804A] bg-[#38a06c6c]"}`}
+                                    >
+                                        <span
+                                            className={`w-2.5 h-2.5 mr-2 rounded-full ${row.status === "Active" ? "bg-[#ff0000]" : "bg-[#14804A]"}`}
+                                        ></span>
+                                        {row.status}
+                                    </span>
                                 </td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">
                                     {renderStars(row.ratings)}
@@ -423,17 +430,17 @@ const AllProducts = () => {
             </div>
             {/* Pagination */}
             <div className="flex justify-center gap-2 mt-4">
-                    {[...Array(totalPages).keys()].map((page) => (
-                        <button
-                            key={page + 1}
-                            onClick={() => handlePageNumberClick(page + 1)}
-                            className={`px-4 py-2 border rounded ${page + 1 === currentPage ? "bg-blue-500 text-white" : "bg-gray-200"
-                                }`}
-                        >
-                            {page + 1}
-                        </button>
-                    ))}
-                    </div>
+                {[...Array(totalPages).keys()].map((page) => (
+                    <button
+                        key={page + 1}
+                        onClick={() => handlePageNumberClick(page + 1)}
+                        className={`px-4 py-2 border rounded ${page + 1 === currentPage ? "bg-blue-500 text-white" : "bg-gray-200"
+                            }`}
+                    >
+                        {page + 1}
+                    </button>
+                ))}
+            </div>
             <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
         </div>
 
