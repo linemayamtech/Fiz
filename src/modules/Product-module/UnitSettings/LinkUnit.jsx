@@ -5,9 +5,13 @@ import { GrCloudUpload } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import LinkUnitModal from './LinkUnitModal';
+import BulkImportLinktUnitModal from './BulkImportLinkUnitModal';
+
 
 const LinkUnit = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
+
 
     // Dummy data for the table
     const [tableData, setTableData] = useState([
@@ -37,7 +41,7 @@ const LinkUnit = () => {
                 <div className='flex justify-end gap-[20px] pe-[10px]'>
                     <div className='bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]'>
                         <IoCloudDownloadOutline />
-                        <button>Import Link Unit</button>
+                        <button onClick={()=> setIsModalOpen2(true)}>Import Link Unit</button>
                     </div>
                     <div className='bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]'>
                         <GrCloudUpload />
@@ -86,6 +90,7 @@ const LinkUnit = () => {
                     onSave={handleAddLinkUnit}
                 />
             )}
+            <BulkImportLinktUnitModal isOpen2={isModalOpen2} closeModal2={() => setIsModalOpen2(false)} />
         </div>
     );
 };

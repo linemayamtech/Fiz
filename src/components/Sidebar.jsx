@@ -3,7 +3,6 @@ import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { FaGlobe } from "react-icons/fa";
-// import { ImUser } from "react-icons/im";
 import { BsShop } from "react-icons/bs";
 import { LuShoppingCart } from "react-icons/lu";
 import { TbUserPentagon } from "react-icons/tb";
@@ -14,16 +13,20 @@ import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { TbPremiumRights } from "react-icons/tb";
 import { IoTicketSharp } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
-import profile from "../Assets/images/profile-pic.jpg"
-
+import profile from "../Assets/images/profile-pic.jpg";
+import './Sidebar.css'
 
 const Sidebar = () => {
   return (
     <>
-      <div className="px-5 py-10 pb-20 bg-[#171C26] flex flex-col gap-5 fixed w-1/6 h-screen">
+      <div className="px-5 py-10 pb-20 bg-[#171C26] flex flex-col gap-[10px] fixed w-1/6 h-screen">
         <div className="flex gap-3">
           <div>
-            <img src={profile} alt="Profile" className="w-[70px] h-[70px] rounded-full " />
+            <img
+              src={profile}
+              alt="Profile"
+              className="xl:w-[70px] xl:h-[70px] lg:w-[50px] lg:h-[50px] rounded-full"
+            />
           </div>
           <div>
             <h1 className="text-white">Jack Thomas</h1>
@@ -40,9 +43,7 @@ const Sidebar = () => {
             <FaSearch />
           </span>
         </div>
-        <div className="flex flex-col py-3 gap-3 overflow-y-scroll scrollbar-hide">
-          
-          
+        <div className="flex flex-col py-2 gap-2 overflow-y-scroll custom-scrollbar">
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -51,11 +52,9 @@ const Sidebar = () => {
             }
             to="dashboard"
           >
-            <span className="text-white"><MdOutlineSpaceDashboard /></span>
-            Dashboard
+            <MdOutlineSpaceDashboard />
+            <span className="text-white md:text-sm xl:text-lg">Dashboard</span>
           </NavLink>
-          
-       
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -64,8 +63,8 @@ const Sidebar = () => {
             }
             to="websitesettings"
           >
-            <span><FaGlobe /></span>
-            Website Settings
+            <FaGlobe />
+            <span className="text-white md:text-sm xl:text-lg">Website Settings</span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -75,9 +74,9 @@ const Sidebar = () => {
             }
             to="buyer"
           >
-            <span><LuShoppingCart />
-            </span>
-            Buyer
+            <LuShoppingCart />
+            <span className="text-white md:text-sm xl:text-lg">Buyer</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -86,11 +85,10 @@ const Sidebar = () => {
                 : "text-white flex gap-2 items-center px-2 py-2 hover:bg-gray-500 rounded-md font-medium"
             }
             to="productsellers"
-          >       
-          <span><BsShop />
-
-          </span>
-            Product Sellers
+          > 
+          <BsShop />      
+          <span className="text-white md:text-sm xl:text-lg">Product Sellers</span>
+           
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -100,9 +98,9 @@ const Sidebar = () => {
             }
             to="osp"
           >
-            <span><TbUserPentagon />
-            </span>
-            OSP
+            <TbUserPentagon />
+            <span className="text-white md:text-sm xl:text-lg">OSP</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -112,8 +110,9 @@ const Sidebar = () => {
             }
             to="product-module/all-products"
           >
-            <span><AiFillProduct /></span>
-            Products
+            <AiFillProduct />
+            <span className="text-white md:text-sm xl:text-lg">Products</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -123,9 +122,9 @@ const Sidebar = () => {
             }
             to="services"
           >
-            <span><GrServices />
-            </span>
-            Services
+            <GrServices />
+            <span className="text-white md:text-sm xl:text-lg">Services</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -135,9 +134,9 @@ const Sidebar = () => {
             }
             to="productrfq"
           >
-            <span><IoDocumentTextOutline />
-            </span>
-            Product RFQ & Quotes
+            <IoDocumentTextOutline />
+            <span className="text-white md:text-sm xl:text-lg">Product RFQ & Quotes</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -147,9 +146,8 @@ const Sidebar = () => {
             }
             to="servicerfq"
           >
-            <span><HiOutlineDocumentSearch />
-            </span>
-            Services RFQ & Quotes
+            <HiOutlineDocumentSearch />
+            <span className="text-white md:text-sm xl:text-lg">Services RFQ & Quotes</span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -159,9 +157,9 @@ const Sidebar = () => {
             }
             to="order"
           >
-            <span><TbPremiumRights />
-            </span>
-            Order & Subscription
+            <TbPremiumRights />
+            <span>Order & Subscription</span>
+            
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -171,9 +169,8 @@ const Sidebar = () => {
             }
             to="tickets"
           >
-            <span><IoTicketSharp />
-            </span>
-            Tickets
+            <IoTicketSharp />
+            <span className="text-white md:text-sm xl:text-lg">Tickets</span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -183,9 +180,8 @@ const Sidebar = () => {
             }
             to="settings"
           >
-            <span><CiSettings />
-            </span>
-            Settings
+            <CiSettings />
+            <span className="text-white md:text-sm xl:text-lg">Settings</span>
           </NavLink>
         </div>
       </div>

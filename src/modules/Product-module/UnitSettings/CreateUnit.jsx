@@ -5,11 +5,15 @@ import { GrCloudUpload } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import CreateUnitModal from './CreateUnitModal';
+import BulkImportCreateUnitModal from './BulkImportCreateUnitModal';
 
 const CreateUnit = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [unit, setUnit] = useState('');
     const [unitDescription, setUnitDescription] = useState('');
+
+
 
     const handleAddUnit = () => {
         console.log('Unit:', unit, 'Description:', unitDescription);
@@ -41,7 +45,7 @@ const CreateUnit = () => {
                 <div className='flex justify-end gap-[20px] pe-[10px]'>
                     <div className='bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]'>
                         <IoCloudDownloadOutline />
-                        <button>Import Link Unit</button>
+                        <button onClick={()=> setIsModalOpen2(true)}>Import Link Unit</button>
                     </div>
                     <div className='bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]'>
                         <GrCloudUpload />
@@ -89,6 +93,7 @@ const CreateUnit = () => {
                 setUnitDescription={setUnitDescription}
                 handleAddUnit={handleAddUnit}
             />
+            <BulkImportCreateUnitModal isOpen2={isModalOpen2} closeModal2={() => setIsModalOpen2(false)} />
         </div>
     );
 };

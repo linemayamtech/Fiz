@@ -248,7 +248,7 @@ const AllProducts = () => {
                             </div>
                         </div>
                         <div className="mt-2 relative w-[100%] sm:w-auto">
-                            <button onClick={toggleMenu2} className="border border-gray-300 px-2 py-1 mt-2 rounded text-gray-400 w-[100%] sm:w-[130px]">
+                            <button onClick={toggleMenu2} className="border border-gray-300 px-2 py-1  rounded text-gray-400 w-[100%] sm:w-[130px]">
                                 Action
                             </button>
                             <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg text-[#000] absolute top-[35px] w-[250px] ${isMenuOpen2 ? 'block' : 'hidden'}`}>
@@ -266,7 +266,7 @@ const AllProducts = () => {
                         <div className="mt-2 relative w-[100%] sm:w-auto">
                             <button
                                 onClick={toggleMenu3}
-                                className="border border-gray-300 px-2 py-1 mt-2 rounded text-gray-400 w-[100%] sm:w-[130px]"
+                                className="border border-gray-300 px-2 py-1 rounded text-gray-400 w-[100%] sm:w-[130px]"
                             >
                                 Filter
                             </button>
@@ -421,6 +421,7 @@ const AllProducts = () => {
                     </tbody>
                 </table>
             </div>
+            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
         </div>
 
     );

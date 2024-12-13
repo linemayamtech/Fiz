@@ -4,10 +4,13 @@ import { IoCloudDownloadOutline } from "react-icons/io5";
 import { GrCloudUpload } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import RelatedHSNModal from './RelatedUnitModal'; // Import the Modal component
+import RelatedHSNModal from './RelatedUnitModal'; 
+import BulkImportModalRelated from './BulkUploadModalRelated';// Import the Modal component
+
 
 const RelatedProductSettings = () => {
   const [modalOpen, setModalOpen] = useState(false);
+   const [isModalOpen2, setIsModalOpen2] = useState(false);
 
   // Dummy data for the table
   const [tableData, setTableData] = useState([
@@ -37,7 +40,7 @@ const RelatedProductSettings = () => {
         <div className="flex justify-end gap-[20px] pe-[10px]">
           <div className="bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]">
             <IoCloudDownloadOutline />
-            <button>Import Link Unit</button>
+            <button onClick={()=>setIsModalOpen2(true)}>Import Link Unit</button>
           </div>
           <div className="bg-[#CDDCFA] text-[#002F79] px-3 py-1 flex gap-[8px] items-center font-semibold rounded-[5px]">
             <GrCloudUpload />
@@ -82,6 +85,8 @@ const RelatedProductSettings = () => {
           onSave={handleAddLinkUnit}
         />
       )}
+
+    <BulkImportModalRelated isOpen2={isModalOpen2} closeModal2={() => setIsModalOpen2(false)} />
     </div>
   );
 };

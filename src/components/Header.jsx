@@ -133,21 +133,21 @@ const Header = () => {
             <div className="flex justify-evenly gap-5 items-center">
               <div>
                 <form>
-                  <div className="hidden lg:flex w-[10vw] py-2 justify-evenly border rounded-3xl bg-white    border-oceanBlue">
+                  <div className="hidden lg:flex w-[10vw] py-2 justify-evenly border border-[#0C92CC] rounded-3xl bg-white    border-oceanBlue">
                     <div className="">
                       <input type="radio" name="choose" value="Option 1" />
-                      <label className="ps-1 text-oceanBlue">Buyer</label>
+                      <label className="ps-1 text-[#0C92CC]">Buyer</label>
                     </div>
                     <div className="">
                       <input type="radio" name="choose" value="Option 2" />
-                      <label className="ps-1 text-oceanBlue">Seller</label>
+                      <label className="ps-1 text-[#0C92CC]">Seller</label>
                     </div>
                   </div>
                 </form>
               </div>
               <div className="relative group">
                 {/* Button */}
-                <button className="border text-nowrap border-oceanBlue text-oceanBlue px-5 py-2 rounded-full">
+                <button className="border text-nowrap border-[#0C92CC] text-[#0C92CC] px-5 py-2 rounded-full">
                   Choose Country
                 </button>
 
@@ -215,11 +215,11 @@ const Header = () => {
               </div>
 
               <div className="">
-                <select className="w-36 outline-none border border-oceanBlue text-oceanBlue px-5 py-2 rounded-full" name="" id="">
-                    <option disabled value="">Nature of Bussiness</option>
-                    <option className="text-oceanBlue" value="">B2B Product Buyer</option>
-                    <option value="">B2B Product Seller</option>
-                    <option value="">Product Trader</option>
+                <select className="w-36 outline-none border border-[#0C92CC] text-[#0C92CC] px-5 py-2 rounded-full" name="" id="">
+                    <option disabled selected value="">Nature of Bussiness</option>
+                    <option className="text-oceanBlue" value="b2b product-buyer">B2B Product Buyer</option>
+                    <option value="beb product-seller">B2B Product Seller</option>
+                    <option value="product-trader">Product Trader</option>
                     <option className="w-10 text-wrap" value="">Institution bulk buyer for self consumption</option>
                     <option value="">B2B Original Service Seller</option>
                     <option value="">B2B Original Service Buyer</option>
@@ -250,7 +250,7 @@ const Header = () => {
                       placeholder={placeholder} // Set the placeholder dynamically
                     />
                   </div>
-                  <div className="flex bg-blood rounded-full ms-2 p-[6px] px-3  bottom-[2px]">
+                  <div className="flex bg-[#ff0000] rounded-full ms-2 p-[6px] px-3  bottom-[2px]">
                     <div className="pt-1 text-white">
                       <IoIosSearch />
                     </div>
@@ -268,7 +268,7 @@ const Header = () => {
         <img
           src={profile}
           alt="profile"
-          className="rounded-full"
+          className="rounded-full lg:w-[50px] lg:h-[40px]"
         />
       </div>
 
