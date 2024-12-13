@@ -5,7 +5,7 @@ import SelfLifeDetails from './SelfLifeDetails.jsx';
 import SellerDetails from './SellerDetails.jsx';
 import BuyerDetails from './BuyerDetails.jsx';
 import ProductDescription from './ProductDescription';
-// Import other child components
+import './Addproduct.css'
 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
@@ -17,10 +17,17 @@ const AddProduct = () => {
         productDescription: {},
     });
 
+    const [isProductActive, setIsProductActive] = useState(false); // State for product status (active or inactive)
+
+    const handleToggleProductStatus = () => {
+        setIsProductActive(!isProductActive); // Toggle the product status
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form Data:', formData);
-        // Send the formData to your backend
+        console.log('Product Status:', isProductActive ? 'Activated' : 'Deactivated');
+        // Send the formData and product status to your backend
     };
 
     return (
@@ -31,6 +38,26 @@ const AddProduct = () => {
                     {/* Toggle Button */}
                 </div>
                 <form onSubmit={handleSubmit}>
+                    {/* Product Activation/Deactivation Toggle */}
+                    <div className="flex items-center justify-end gap-4 mt-5">
+                        <div 
+                            className={`relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in`}
+                        >
+                            <input 
+                                type="checkbox" 
+                                id="toggle" 
+                                checked={isProductActive} 
+                                onChange={handleToggleProductStatus} 
+                                className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"
+                            />
+                            <label 
+                                htmlFor="toggle" 
+                                className={`toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer`} 
+                            />
+                        </div>
+                        <span className="text-xl font-semibold">{isProductActive ? 'Activated' : 'Deactivated'}</span>
+                    </div>
+
                     {/* Project Management Section */}
                     <div className="px-[30px] py-6 shadow-custom mt-5">
                         <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Management Details</h1>
@@ -41,41 +68,40 @@ const AddProduct = () => {
                     </div>
                     {/* Product Details Section */}
                     <div className="px-[30px] py-6 shadow-custom mt-5">
-                    <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Details</h1>
+                        <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Details</h1>
                         <ProductDetails
                             data={formData.productDetails}
                             setData={(data) => setFormData({ ...formData, productDetails: data })}
                         />
                     </div>
                     <div className="px-[30px] py-6 shadow-custom mt-5">
-                    <h1 className='text-xl font-semibold underline text-[#333] py-3'>Self Life & Expiry Details</h1>
+                        <h1 className='text-xl font-semibold underline text-[#333] py-3'>Self Life & Expiry Details</h1>
                         <SelfLifeDetails
                             data={formData.selfLifeDetails}
                             setData={(data) => setFormData({ ...formData, selfLifeDetails: data })}
                         />
                     </div>
                     <div className="px-[30px] py-6 shadow-custom mt-5">
-                    <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Of Seller</h1>
+                        <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Of Seller</h1>
                         <SellerDetails
                             data={formData.sellerDetails}
                             setData={(data) => setFormData({ ...formData, sellerDetails: data })}
                         />
                     </div>
                     <div className="px-[30px] py-6 shadow-custom mt-5">
-                    <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Of Buyer</h1>
+                        <h1 className='text-xl font-semibold underline text-[#333] py-3'>Product Of Buyer</h1>
                         <BuyerDetails
                             data={formData.buyerDetails}
                             setData={(data) => setFormData({ ...formData, buyerDetails: data })}
                         />
                     </div>
                     <div className="px-[30px] py-6 shadow-custom mt-5">
-                    <h1 className='text-xl font-semibold underline text-[#333] py-3'>Description About Products</h1>
+                        <h1 className='text-xl font-semibold underline text-[#333] py-3'>Description About Products</h1>
                         <ProductDescription
                             data={formData.productDescription}
                             setData={(data) => setFormData({ ...formData, productDescription: data })}
                         />
                     </div>
-                    {/* Add other sections similarly */}
 
                     <div className="flex justify-end mt-6">
                         <button
@@ -86,8 +112,8 @@ const AddProduct = () => {
                         </button>
                     </div>
                 </form>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 

@@ -4,6 +4,7 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from '../Assets/images/ZeroMiddleMan Logo 3.png';
 import profile from "../Assets/images/profile-pic.jpg"
+import { IoIosArrowDown } from "react-icons/io";
 
 const Header = () => {
     const [isimgDropdownVisible, setIsimgDropdownVisible] = useState(false);
@@ -38,7 +39,7 @@ const Header = () => {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
 
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  // const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleCountryChange = (country) => {
     setSelectedCountry(country);
@@ -55,11 +56,11 @@ const Header = () => {
   };
 
   const [placeholder, setPlaceholder] = useState("I'm Looking For.........");
-  const [isopen, setIsOpen] = useState(false);
+  // const [isopen, setIsOpen] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsOpen(!isopen);
-  };
+  // const toggleNavbar = () => {
+  //   setIsOpen(!isopen);
+  // };
 
   // Handler to update the placeholder based on the selected option
   const handleSelectChange = (event) => {
@@ -81,31 +82,31 @@ const Header = () => {
     }
   };
   // Separate state for each NavDropdown
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [showServices, setShowServices] = useState(false);
-  const [showPostReq, setShowPostReq] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
-  const [showBenefits, setShowBenefits] = useState(false);
-  const [showBusiness, setShowBusiness] = useState(false);
+  // const [showSignIn, setShowSignIn] = useState(false);
+  // const [showServices, setShowServices] = useState(false);
+  // const [showPostReq, setShowPostReq] = useState(false);
+  // const [showRegister, setShowRegister] = useState(false);
+  // const [showBenefits, setShowBenefits] = useState(false);
+  // const [showBusiness, setShowBusiness] = useState(false);
 
-  const handleSignInMouseEnter = () => setShowSignIn(true);
-  const handleSignInMouseLeave = () => setShowSignIn(false);
+  // const handleSignInMouseEnter = () => setShowSignIn(true);
+  // const handleSignInMouseLeave = () => setShowSignIn(false);
 
-  const handleRegisterMouseEnter = () => setShowRegister(true);
+  // const handleRegisterMouseEnter = () => setShowRegister(true);
 
-  const handleRegisterMouseLeave = () => setShowRegister(false);
+  // const handleRegisterMouseLeave = () => setShowRegister(false);
 
-  const handleServicesMouseEnter = () => setShowServices(true);
-  const handleServicesMouseLeave = () => setShowServices(false);
+  // const handleServicesMouseEnter = () => setShowServices(true);
+  // const handleServicesMouseLeave = () => setShowServices(false);
 
-  const handleBenefitsMouseEnter = () => setShowBenefits(true);
-  const handleBenefitsMouseLeave = () => setShowBenefits(false);
+  // const handleBenefitsMouseEnter = () => setShowBenefits(true);
+  // const handleBenefitsMouseLeave = () => setShowBenefits(false);
 
-  const handleBusinessMouseEnter = () => setShowBusiness(true);
-  const handleBusinessMouseLeave = () => setShowBusiness(false);
+  // const handleBusinessMouseEnter = () => setShowBusiness(true);
+  // const handleBusinessMouseLeave = () => setShowBusiness(false);
 
-  const handlePostReqMouseEnter = () => setShowPostReq(true);
-  const handlePostReqMouseLeave = () => setShowPostReq(false);
+  // const handlePostReqMouseEnter = () => setShowPostReq(true);
+  // const handlePostReqMouseLeave = () => setShowPostReq(false);
   return (
     <>
       <div className="w-full sticky top-0 z-10 bg-white px-3  shadow-md pb-2">
@@ -147,9 +148,13 @@ const Header = () => {
               </div>
               <div className="relative group">
                 {/* Button */}
-                <button className="border text-nowrap border-[#0C92CC] text-[#0C92CC] px-5 py-2 rounded-full">
+                <div className="flex items-center gap-[10px] border text-nowrap border-[#0C92CC] text-[#0C92CC] px-2 py-2 rounded-full">
+              <button>
                   Choose Country
                 </button>
+                <IoIosArrowDown/>
+                </div>
+                
 
                 {/* Dropdown Div */}
                 <div className="absolute left-0 top-full hidden group-hover:flex flex-col gap-4 w-full mx-auto p-4 border rounded-md shadow-md bg-white">

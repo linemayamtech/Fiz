@@ -8,7 +8,7 @@ const CategoryManagement = () => {
       <div className="shadow-custom px-[100px] py-2 rounded-[15px]">
         <div className="text-center py-3">
           <h1 className="text-xl">
-            <span className="text-[#FF0000]">ZeroMiddleMan</span> Categories
+            <span className="text-[#FF0000] font-semibold">ZeroMiddleMan</span> Categories
           </h1>
           <p className="text-[#828282] pb-[20px]">
             ZeroMiddleMan's unique classification of products and services allows you to search for companies worldwide

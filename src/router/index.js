@@ -9,50 +9,52 @@ import UnitSettings from "../modules/Product-module/UnitSettings/UnitSettings";
 import RelatedProductSettings from "../modules/Product-module/RelatedUnitSettings/RelatedProductSettings";
 import ViewProduct from "../modules/ViewProduct.jsx/ViewProduct";
 
-
-
 const router = createBrowserRouter([
     {
-        path:'/',
-        element:<App/>,
-        children:[
-           {
-            path:'product-module',
-            element:<ProductModule/>,
-            children:[
-                {
-                    path:'all-products',
-                    element:<AllProducts/>
-                },
-                {
-                    path:'add-products',
-                    element:<AddProduct/>
-                },
-                {
-                    path:'category-management',
-                    element:<CategoryManagement/>
-                },
-                {
-                    path:'hsn-management',
-                    element:<HsnManagement/>
-                },
-                {
-                    path:'unit-settings',
-                    element:<UnitSettings/>
-                },
-                {
-                    path:'related-product-settings',
-                    element:<RelatedProductSettings/>
-                },
-                {
-                    path:'view-product',
-                    element:<ViewProduct/>
-                }
-            ]
-           }
+        path: '/',
+        element: <App />,
+        children: [
+            {
+                path: 'product-module',
+                element: <ProductModule />,
+                children: [
+                    {
+                        // Default route for product-module
+                        index: true,
+                        element: <AllProducts />
+                    },
+                    {
+                        path: 'all-products',
+                        element: <AllProducts />
+                    },
+                    {
+                        path: 'add-products',
+                        element: <AddProduct />
+                    },
+                    {
+                        path: 'category-management',
+                        element: <CategoryManagement />
+                    },
+                    {
+                        path: 'hsn-management',
+                        element: <HsnManagement />
+                    },
+                    {
+                        path: 'unit-settings',
+                        element: <UnitSettings />
+                    },
+                    {
+                        path: 'related-product-settings',
+                        element: <RelatedProductSettings />
+                    },
+                    {
+                        path: 'view-product',
+                        element: <ViewProduct />
+                    }
+                ]
+            }
         ]
     },
-  
-])
+]);
 
 export default router;

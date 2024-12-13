@@ -108,7 +108,7 @@ const Sidebar = () => {
                 ? "text-white flex gap-2 items-center px-2 py-2 bg-blood-gradient rounded-md font-medium"
                 : "text-white flex gap-2 items-center px-2 py-2 hover:bg-gray-500 rounded-md font-medium"
             }
-            to="product-module/all-products"
+            to="product-module"
           >
             <AiFillProduct />
             <span className="text-white md:text-sm xl:text-lg">Products</span>

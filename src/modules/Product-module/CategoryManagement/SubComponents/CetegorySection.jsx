@@ -3,7 +3,8 @@ import { LuCloudDownload } from "react-icons/lu";
 import { MdOutlinePlaylistAdd, MdOutlineDelete } from "react-icons/md";
 import { CgAddR } from "react-icons/cg";
 import { FiMinusSquare } from "react-icons/fi";
-import BulkImportModal from "./BulkImportModal"; // Import the Modal
+import BulkImportModal from "./BulkImportModal"; 
+import SuccessModalCategory from "./SuccessModalCategory";// Import the Modal
 
 const CategorySection = () => {
     const [categories, setCategories] = useState([
@@ -20,7 +21,18 @@ const CategorySection = () => {
                 {
                     name: "Crops",
                     isExpanded: false,
-                    subcategories: []
+                    subcategories: [
+                        {
+                            name: "Rice",
+                            isExpanded: false,
+                            subcategories: []
+                        },  
+                        {
+                            name: "Wheat",
+                            isExpanded: false,
+                            subcategories: []
+                        },  
+                    ]
                 }
             ]
         },
@@ -45,7 +57,7 @@ const CategorySection = () => {
 
     const [newSubcategory, setNewSubcategory] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
-
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const toggleExpand = (node) => {
         node.isExpanded = !node.isExpanded;
         setCategories([...categories]);
@@ -80,6 +92,11 @@ const CategorySection = () => {
         setCategories([...categories]);
     };
 
+    const handleUploadSuccess = () => {
+        setIsSuccessModalOpen(true); // Open the success modal when upload is successful
+        setIsModalOpen(false); // Close the Bulk Import modal
+      };
+
     const renderCategory = (node, parentNode = null) => {
         return (
             <div key={node.name} className="pl-[20px]">
@@ -90,15 +107,22 @@ const CategorySection = () => {
                             onClick={() => toggleExpand(node)}
                         />
                     ) : (
-                        <CgAddR
-                            className="text-[#0F91D2] text-lg cursor-pointer"
-                            onClick={() => toggleExpand(node)}
+                        node.subcategories.length > 0 && ( // Only show the plus icon if the category has subcategories
+                            <CgAddR
+                                className="text-[#0F91D2] text-lg cursor-pointer"
+                                onClick={() => toggleExpand(node)}
+                            />
+                        )
+                    )}
+    
+                    {/* Only show the add icon if the category has subcategories */}
+                    {node.subcategories.length > 0 && (
+                        <MdOutlinePlaylistAdd
+                            className="text-gray-400 text-lg cursor-pointer"
+                            onClick={() => toggleAddSubcategory(node)}
                         />
                     )}
-                    <MdOutlinePlaylistAdd
-                        className="text-gray-400 text-lg cursor-pointer"
-                        onClick={() => toggleAddSubcategory(node)}
-                    />
+    
                     {parentNode && (
                         <MdOutlineDelete
                             className="text-gray-400 text-lg cursor-pointer"
@@ -108,7 +132,7 @@ const CategorySection = () => {
                     <input type="checkbox" className="text-lg" />
                     <label>{node.name}</label>
                 </div>
-
+    
                 {node.isExpanded && node.isAddingSubcategory && (
                     <div className="pl-[20px] flex gap-[10px] items-center pt-2">
                         <input
@@ -136,7 +160,7 @@ const CategorySection = () => {
                         </button>
                     </div>
                 )}
-
+    
                 {node.isExpanded && node.subcategories.length > 0 && (
                     <div className="pl-[20px]">
                         {node.subcategories.map((subcategory) => renderCategory(subcategory, node))}
@@ -145,6 +169,7 @@ const CategorySection = () => {
             </div>
         );
     };
+    
 
     return (
         <div className="shadow-custom category-section py-4 mb-8 px-6 rounded-[20px]">
@@ -180,7 +205,12 @@ const CategorySection = () => {
             </div>
 
             {/* Bulk Import Modal */}
-            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} handleUploadSuccess={handleUploadSuccess} />
+            <SuccessModalCategory
+            isOpen={isSuccessModalOpen}
+            closeModal={() => setIsSuccessModalOpen(false)}
+            message="Category details have been successfully imported!"
+            />
         </div>
     );
 };

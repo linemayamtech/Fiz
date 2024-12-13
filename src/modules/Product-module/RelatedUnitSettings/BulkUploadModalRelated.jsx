@@ -1,6 +1,5 @@
-// BulkImportModalRelated.js
 import React, { useState } from "react";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaCloudUploadAlt } from "react-icons/fa"; // Add this icon
 
 const BulkImportModalRelated = ({ isOpen2, closeModal2, handleUploadSuccess }) => {
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -39,24 +38,53 @@ const BulkImportModalRelated = ({ isOpen2, closeModal2, handleUploadSuccess }) =
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                 >
+                    {/* Modal Header */}
                     <h1 className="text-lg font-bold text-left text-gray-700">
-                        Import Related Details
+                        Import HSN Details
                     </h1>
 
+                    {/* Drag and Drop Zone */}
                     <div className="flex-grow flex flex-col justify-center items-center border-dashed border-2 border-gray-400 p-6 mt-4">
                         <FaCloudUploadAlt className="text-5xl text-gray-500 mb-4" />
-                        <p className="text-gray-600">Select a file to upload</p>
+                        <p className="text-gray-600">Select a file or drag and drop here</p>
+                        <span className="text-sm text-gray-400 mt-1">
+                            File size should not exceed 10 MB
+                        </span>
+
+                        {/* Hidden File Input */}
                         <input
                             type="file"
                             multiple
+                            id="fileInput"
                             onChange={handleFileChange}
-                            className="mt-4"
+                            className="hidden"
                         />
+                        {/* Select File Button */}
+                        <label
+                            htmlFor="fileInput"
+                            className="mt-4 bg-[#0F91D2] text-white px-6 py-2 rounded-lg cursor-pointer"
+                        >
+                            Select File
+                        </label>
                     </div>
 
-                    <div className="flex justify-between mt-6">
+                    {/* Selected Files List */}
+                    {selectedFiles.length > 0 && (
+                        <div className="mt-4">
+                            <ul>
+                                {Array.from(selectedFiles).map((file, index) => (
+                                    <li key={index} className="text-sm text-gray-600">
+                                        {file.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {/* Modal Actions */}
+                    <div className="mt-4 flex justify-end gap-4">
                         <button
-                            className="bg-[#FF0000] text-white px-6 py-2 rounded-lg"
+                            className="bg-gray-300 px-4 py-2 rounded-lg"
                             onClick={closeModal2}
                         >
                             Close

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa"; // Add this icon
 
-const BulkImportModal = ({ isOpen, closeModal }) => {
+const BulkImportModal = ({ isOpen, closeModal, handleUploadSuccess }) => {
     const [selectedFiles, setSelectedFiles] = useState([]);
 
     const handleFileChange = (e) => {
@@ -23,7 +23,7 @@ const BulkImportModal = ({ isOpen, closeModal }) => {
     const handleUpload = () => {
         // Handle file upload logic here (e.g., sending files to the server)
         console.log("Files uploaded:", selectedFiles);
-        closeModal();
+        handleUploadSuccess();
     };
 
     return (

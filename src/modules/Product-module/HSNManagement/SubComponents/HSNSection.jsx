@@ -4,6 +4,7 @@ import { MdOutlinePlaylistAdd, MdOutlineDelete } from "react-icons/md";
 import { CgAddR } from "react-icons/cg";
 import { FiMinusSquare } from "react-icons/fi";
 import BulkImportModal from "./BulkImportModal";
+import SuccessModalHSN from "./SucessModalHSN";
 
 const HSNSection = () => {
     const [hsnCodes, setHsnCodes] = useState([
@@ -58,6 +59,7 @@ const HSNSection = () => {
 
     const [newSubcategory, setNewSubcategory] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     const toggleExpand = (node) => {
         node.isExpanded = !node.isExpanded;
@@ -82,6 +84,11 @@ const HSNSection = () => {
         }
     };
 
+    const handleUploadSuccess = () => {
+        setIsSuccessModalOpen(true); // Open the success modal when upload is successful
+        setIsModalOpen(false); // Close the Bulk Import modal
+      };
+
     const deleteHsnCode = (parentNode, nodeToDelete) => {
         if (parentNode) {
             parentNode.subcategories = parentNode.subcategories.filter(
@@ -103,10 +110,12 @@ const HSNSection = () => {
                             onClick={() => toggleExpand(node)}
                         />
                     ) : (
-                        <CgAddR
-                            className="text-[#0F91D2] text-lg cursor-pointer"
-                            onClick={() => toggleExpand(node)}
-                        />
+                        node.subcategories.length > 0 && (
+                            <CgAddR
+                                className="text-[#0F91D2] text-lg cursor-pointer"
+                                onClick={() => toggleExpand(node)}
+                            />
+                        )
                     )}
                     <MdOutlinePlaylistAdd
                         className="text-gray-400 text-lg cursor-pointer"
@@ -192,7 +201,10 @@ const HSNSection = () => {
             <div className="px-[30px] py-[30px] hsn-selection">
                 {hsnCodes.map((hsnCode) => renderHsnCode(hsnCode))}
             </div>
-            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} handleUploadSuccess={handleUploadSuccess} />
+            <SuccessModalHSN isOpen={isSuccessModalOpen}
+            closeModal={() => setIsSuccessModalOpen(false)}
+            message="HSN details have been successfully imported!" />
         </div>
     );
 };

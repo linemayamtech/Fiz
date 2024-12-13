@@ -1,8 +1,10 @@
 import React from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import './ProductModule.css'; // Import external CSS file for transitions
 
 const ProductModule = () => {
+    const location = useLocation();
+
     return (
         <div>
             <div className='p-[30px] border-b border-gray-200 w-full'>
@@ -11,9 +13,9 @@ const ProductModule = () => {
             <div>
                 <div className='flex gap-[40px] py-[20px] ps-[30px]'>
                     <NavLink
-                        to="/product-module/all-products"
+                        to="all-products"
                         className={({ isActive }) =>
-                            isActive
+                            isActive || location.pathname === '/product-module'
                                 ? 'nav-link active-link text-sm'
                                 : 'nav-link text-sm'
                         }
@@ -21,7 +23,7 @@ const ProductModule = () => {
                         All Product List
                     </NavLink>
                     <NavLink
-                        to="/product-module/add-products"
+                        to="add-products"
                         className={({ isActive }) =>
                             isActive
                                 ? 'nav-link active-link text-sm'
@@ -31,7 +33,7 @@ const ProductModule = () => {
                         Add Product
                     </NavLink>
                     <NavLink
-                        to="/product-module/category-management"
+                        to="category-management"
                         className={({ isActive }) =>
                             isActive
                                 ? 'nav-link active-link text-sm'
@@ -41,7 +43,7 @@ const ProductModule = () => {
                         Category Management
                     </NavLink>
                     <NavLink
-                        to="/product-module/hsn-management"
+                        to="hsn-management"
                         className={({ isActive }) =>
                             isActive
                                 ? 'nav-link active-link text-sm'
@@ -51,7 +53,7 @@ const ProductModule = () => {
                         HSN Management
                     </NavLink>
                     <NavLink
-                        to="/product-module/unit-settings"
+                        to="unit-settings"
                         className={({ isActive }) =>
                             isActive
                                 ? 'nav-link active-link text-sm'
@@ -61,7 +63,7 @@ const ProductModule = () => {
                         Unit Settings
                     </NavLink>
                     <NavLink
-                        to="/product-module/related-product-settings"
+                        to="related-product-settings"
                         className={({ isActive }) =>
                             isActive
                                 ? 'nav-link active-link text-sm'

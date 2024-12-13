@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { LuCloudDownload } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import BulkImportModal from "./BulkImportModal";
-import PickUpcolumns from "./PickUpcolumns";
+import PickColumnsModal from "./PickColumnsModal";
+import SuccessModalAllProdcuts from "./SuccessModalAllProducts";
 
 
 const AllProducts = () => {
@@ -21,6 +22,7 @@ const AllProducts = () => {
     const [isMenuOpen3, setIsMenuOpen3] = useState(false);
 
 
+
     // Dummy data for the table
     const dummyData = Array.from({ length: 30 }, (_, index) => ({
         id: index + 1,
@@ -36,7 +38,9 @@ const AllProducts = () => {
     const [selectedFilter, setSelectedFilter] = useState(""); // To store the selected filter type
     const [filterValue, setFilterValue] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isModalOpen2, setIsModalOpen2] = useState(false);
+    const [isModalOpen3, setIsModalOpen3] = useState(false);
+    const [isSucessModalOpen,setIsSuccessModalOpen] = useState(false);
+
     // Apply filters
     const filteredData = dummyData.filter((item) => {
         const matchesId = idFilter ? item.id.toString().includes(idFilter) : true;
@@ -171,6 +175,14 @@ const AllProducts = () => {
         setFilterValue("");
     };
 
+    const closeModal3 = ()=>{
+        setIsModalOpen3(false); // Close modal
+        setIsMenuOpen(false); // Close the menu when the modal is closed
+    }
+    const handleUploadSuccess = () => {
+        setIsSuccessModalOpen(true); // Open the success modal when upload is successful
+        setIsModalOpen(false); // Close the Bulk Import modal
+      };
     return (
         <div className="p-4">
             {/* Header Section */}
@@ -213,45 +225,44 @@ const AllProducts = () => {
             </div>
             {/* Table Section */}
             <div className="overflow-x-auto border border-gray-300 rounded-[10px]">
-                <div>
-                    <div className="flex flex-wrap justify-center items-center w-full gap-[10px] p-3">
-                        <input
-                            type="text"
-                            placeholder="Id"
+                    <div className="p-3 w-full flex gap-3">
+                        <input className="bg-[#eeee] px-3 w-full py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300"  placeholder="Id"
                             value={idFilter}
-                            onChange={(e) => setIdFilter(e.target.value)}
-                            className="mt-2 border border-gray-300 rounded px-2 py-1 w-[100%] sm:w-[120px] md:w-[100px]"
-                        />
+                            onChange={(e) => setIdFilter(e.target.value)} />
                         <input
                             type="text"
                             placeholder="Company Name"
                             value={companyNameFilter}
                             onChange={(e) => setCompanyNameFilter(e.target.value)}
-                            className="mt-2 border border-gray-300 rounded px-2 py-1 w-[100%] sm:w-[160px] md:w-[160px]"
+                            className="bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300"
                         />
+                        <input className="bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300"type="text"
+                            placeholder="Company Name"
+                            value={companyNameFilter}
+                            onChange={(e) => setCompanyNameFilter(e.target.value)} />
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="mt-2 border border-gray-300 rounded px-2 py-1 text-gray-400 outline-none w-[100%] sm:w-[160px] md:w-[160px]"
+                            className="bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300"
                         >
                             <option value="">All</option>
                             <option value="Active">Active</option>
                             <option value="Deactive">Deactive</option>
                         </select>
-                        <div className="mt-2 relative w-[100%] sm:w-auto">
-                            <button onClick={toggleMenu1} className="border border-gray-300 px-2 py-1 rounded text-gray-400 w-[100%] sm:w-[100px]">
+                        <div className=" relative bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md  lg:py-3 lg:text-center ">
+                            <button onClick={toggleMenu1} className=" text-gray-500 outline-gray-300">
                                 Menu
                             </button>
-                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg absolute top-[35px] w-[150px] ${isMenuOpen ? 'block' : 'hidden'}`}>
-                                <button onClick={() => setIsModalOpen2(true)} className="font-semibold py-1 text-left">Pick Column</button>
+                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg absolute top-[40px] lg:top-[50px] lg:left-[0px] w-[250px] ${isMenuOpen ? 'block' : 'hidden'}`}>
+                                <button onClick={() => setIsModalOpen3(true)} className="font-semibold py-1 text-left">Pick Column</button>
                                 <button className="font-semibold py-1 text-left">Export Products</button>
                             </div>
                         </div>
-                        <div className="mt-2 relative w-[100%] sm:w-auto">
-                            <button onClick={toggleMenu2} className="border border-gray-300 px-2 py-1  rounded text-gray-400 w-[100%] sm:w-[130px]">
+                        <div className=" relative bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md  lg:py-3 lg:text-center ">
+                            <button onClick={toggleMenu2} className="text-gray-500 outline-gray-300">
                                 Action
                             </button>
-                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg text-[#000] text-left absolute top-[35px] w-[250px] ${isMenuOpen2 ? 'block' : 'hidden'}`}>
+                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg text-[#000] text-left absolute top-[35px] lg:top-[50px] lg:left-[0px] w-[250px] ${isMenuOpen2 ? 'block' : 'hidden'}`}>
                                 <button className="font-semibold py-1 text-left px-1">Bulk Edit</button>
                                 <button className="font-semibold py-1 text-left px-1">Delete</button>
                                 <button className="font-semibold py-1 text-left px-1">Export Selected</button>
@@ -263,10 +274,10 @@ const AllProducts = () => {
                                 <button className="font-semibold py-1 text-left px-1">Add Tags</button>
                             </div>
                         </div>
-                        <div className="mt-2 relative w-[100%] sm:w-auto">
+                        <div className="relative bg-[#eeee] w-full px-3 py-1 lg:py-3 lg:text-center border-2 border-gray-200 rounded-md ">
                             <button
                                 onClick={toggleMenu3}
-                                className="border border-gray-300 px-2 py-1 rounded text-gray-400 w-[100%] sm:w-[130px]"
+                                className=" text-gray-500 outline-gray-300"
                             >
                                 Filter
                             </button>
@@ -312,10 +323,10 @@ const AllProducts = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className="border border-gray-300 px-2 py-1 mt-2 rounded text-gray-400 w-[100%] sm:w-[160px]">Add Group</button>
-                        <button className="border border-gray-300 px-2 py-1 mt-2 rounded text-gray-400 w-[100%] sm:w-[160px]">Last Update</button>
+                        <button className="bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300">Add Group</button>
+                        <button className="bg-[#eeee] w-full px-3 py-1 border-2 border-gray-200 rounded-md text-gray-500 outline-gray-300">Last Update</button>
                     </div>
-                </div>
+                
 
                 <table className="min-w-full table-auto border-collapse">
                     <thead>
@@ -405,17 +416,17 @@ const AllProducts = () => {
                                 </td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">{row.id}</td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">{row.productId}</td>
-                                <td className="border border-gray-300 px-4 py-2">
+                                <td className="border border-gray-300 px-4 py-2 text-[#0C92CC]">
                                     <Link to={'/product-module/view-product'}>{row.companyName}</Link>
                                 </td>
                                 <td className="border border-gray-300 px-4 py-2">{row.email}</td>
                                 <td className="border border-gray-300 px-4 py-2">{row.phoneNumber}</td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">
                                     <span
-                                        className={`flex items-center px-2 rounded-[10px] ${row.status === "Active" ? "text-[#ff0000] bg-[#ef54666e]" : "text-[#14804A] bg-[#38a06c6c]"}`}
+                                        className={`flex items-center px-2 rounded-[10px] ${row.status === "Active" ? "text-[#14804A] bg-[#38a06c6c]" : "text-[#ff0000] bg-[#ef54666e]"}`}
                                     >
                                         <span
-                                            className={`w-2.5 h-2.5 mr-2 rounded-full ${row.status === "Active" ? "bg-[#ff0000]" : "bg-[#14804A]"}`}
+                                            className={`w-2.5 h-2.5 mr-2 rounded-full ${row.status === "Active" ? "bg-[#14804A]" : "bg-[#ff0000]"}`}
                                         ></span>
                                         {row.status}
                                     </span>
@@ -441,7 +452,13 @@ const AllProducts = () => {
                     </button>
                 ))}
             </div>
-            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+            <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} handleUploadSuccess={handleUploadSuccess} />
+            <PickColumnsModal isOpen3={isModalOpen3} closeModal3={closeModal3} />
+            <SuccessModalAllProdcuts
+            isOpen={isSucessModalOpen}
+            closeModal={() => setIsSuccessModalOpen(false)}
+            message="All Product details have been successfully imported!"
+            />
         </div>
 
     );
