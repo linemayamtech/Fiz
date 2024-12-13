@@ -9,6 +9,9 @@ module.exports = {
       boxShadow: {
         'custom': 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
       },
+      backgroundImage: {
+        'blood-gradient': 'linear-gradient(90deg, #ff0000, #CC0000, #990000)',
+      },
     },
   },
   content: [

@@ -251,16 +251,16 @@ const AllProducts = () => {
                             <button onClick={toggleMenu2} className="border border-gray-300 px-2 py-1  rounded text-gray-400 w-[100%] sm:w-[130px]">
                                 Action
                             </button>
-                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg text-[#000] absolute top-[35px] w-[250px] ${isMenuOpen2 ? 'block' : 'hidden'}`}>
-                                <button className="font-semibold py-1">Bulk Edit</button>
-                                <button className="font-semibold py-1">Delete</button>
-                                <button className="font-semibold py-1">Export Selected</button>
-                                <button className="font-semibold py-1">Assigned To</button>
-                                <button className="font-semibold py-1">Clear Assignment</button>
-                                <button className="font-semibold py-1">Email to Selected Contacts</button>
-                                <button className="font-semibold py-1">SMS to Selected Contacts</button>
-                                <button className="font-semibold py-1">Whatsapp Message to Selected Contacts</button>
-                                <button className="font-semibold py-1">Add Tags</button>
+                            <div className={`flex flex-col bg-[#fff] p-3 rounded shadow-lg text-[#000] text-left absolute top-[35px] w-[250px] ${isMenuOpen2 ? 'block' : 'hidden'}`}>
+                                <button className="font-semibold py-1 text-left px-1">Bulk Edit</button>
+                                <button className="font-semibold py-1 text-left px-1">Delete</button>
+                                <button className="font-semibold py-1 text-left px-1">Export Selected</button>
+                                <button className="font-semibold py-1 text-left px-1">Assigned To</button>
+                                <button className="font-semibold py-1 text-left px-1">Clear Assignment</button>
+                                <button className="font-semibold py-1 text-left px-1">Email to Selected Contacts</button>
+                                <button className="font-semibold py-1 text-left px-1">SMS to Selected Contacts</button>
+                                <button className="font-semibold py-1 text-left px-1">Whatsapp Message to Selected Contacts</button>
+                                <button className="font-semibold py-1 text-left px-1">Add Tags</button>
                             </div>
                         </div>
                         <div className="mt-2 relative w-[100%] sm:w-auto">
@@ -421,6 +421,19 @@ const AllProducts = () => {
                     </tbody>
                 </table>
             </div>
+            {/* Pagination */}
+            <div className="flex justify-center gap-2 mt-4">
+                    {[...Array(totalPages).keys()].map((page) => (
+                        <button
+                            key={page + 1}
+                            onClick={() => handlePageNumberClick(page + 1)}
+                            className={`px-4 py-2 border rounded ${page + 1 === currentPage ? "bg-blue-500 text-white" : "bg-gray-200"
+                                }`}
+                        >
+                            {page + 1}
+                        </button>
+                    ))}
+                    </div>
             <BulkImportModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
         </div>
 
